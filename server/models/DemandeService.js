@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-//representation ou declaration du shema que doit avoir chaque poste
+//representation ou declaration du shema que doit avoir chaque demande
 const DemandeServiceSchema = mongoose.Schema({
     title: String,
     message: String,
@@ -11,19 +11,13 @@ const DemandeServiceSchema = mongoose.Schema({
     prix: String,
     localisation: String,
     selectedFile: String,
-
-    //like count est un objet.
     //avec une valeur par defaut
-    /*likeCount: {
-        type: Number,
-        default: 0
-    },*/
     //  like/dislike
     likes: {
         type: [String],
         default: []
     },
-    //objet qui sauvegarde la date de creation du poste
+    //objet qui sauvegarde la date de creation de la demande
     createdAt: {
         type: Date,
         default: new Date()

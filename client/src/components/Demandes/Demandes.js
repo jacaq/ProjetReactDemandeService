@@ -9,13 +9,10 @@ import Demande from './Demande/Demande';
 import useStyles from './styles';
 
 export default function Demandes({ setCurrentId }) {
-  //recuperer ou fetch les posts
+  //recuperer ou fetch les demandes
   const demandes = useSelector((state) => state.demandes);
   const classes = useStyles();
 
-  console.log(demandes);
-
-  //  Ajout perso
   //  affichage selon preference du plus récent ou du plus ancien
   const [newToOld, setNewToOld] = useState(true);
 
@@ -32,7 +29,7 @@ export default function Demandes({ setCurrentId }) {
         </Button>
         {
           /* 
-              mapper les postes contenu dans le tableux un par un  
+              mapper les demandes contenu dans le tableux un par un  
               ne pas oublier le key lors de l'utilisation du map
           */
         }

@@ -4,20 +4,22 @@ import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAltOutlined';
 import DeleteIcon from '@material-ui/icons/Delete';
 import moment from 'moment';
-//je sais pas pourquoi mais pour le delete
 import { useDispatch } from 'react-redux';
 //importation des methodes d'action
 import { deleteDemande, likeDemande } from '../../../actions/demandes';
 
+//modifier format l'affichage des dates
+import 'moment/locale/fr-ca';
+
 import useStyles from './styles';
 
 
-import informatique from '../../../images/services_icons/jardinage.png';
-import plomberie from '../../../images/services_icons/jardinage.png';
+import informatique from '../../../images/services_icons/informatique.png';
+import plomberie from '../../../images/services_icons/plombier.png';
 import jardinage from '../../../images/services_icons/jardinage.png';
-import peinture from '../../../images/services_icons/jardinage.png';
-import meuble from '../../../images/services_icons/jardinage.png';
-import mecanique from '../../../images/services_icons/jardinage.png';
+import peinture from '../../../images/services_icons/painture.png';
+import meuble from '../../../images/services_icons/meuble.png';
+import mecanique from '../../../images/services_icons/mecanique.png';
 import SGFavicon from '../../../images/SGFavicon.png';
 
 
@@ -33,7 +35,7 @@ export default function Demande({ demande, setCurrentId }) {
   //  Logique des likes
   //  affichage intelligents du nombre likes
   //  si l'utilisateur ne like pas afficher juste le nombre de like(s)
-  //  et si l'utilisateur like afficher petit texte pour le dire aussi   //post
+  //  et si l'utilisateur like afficher petit texte pour le dire aussi 
   const Likes = () => {
     if (demande.likes.length > 0) {
       return demande.likes.find((like) => like === (user?.result?.googleId || user?.result?._id))
@@ -71,8 +73,6 @@ export default function Demande({ demande, setCurrentId }) {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
-      /* you can also use 'auto' behaviour
-         in place of 'smooth' */
     });
   };
 
@@ -117,7 +117,7 @@ export default function Demande({ demande, setCurrentId }) {
                 {/* Afficher ou non le bouton si c'est l'utilisateur connécté qui l'a ecrit
                 */}
                 {(user?.result?.googleId === demande?.creator || user?.result?._id === demande?.creator) && (
-                  <>{/*le onClick fait 2 fonction en meme temps */}
+                  <>{/*le onClick fait 2 action en meme temps */}
                     <Button size="small" color="default" onClick={() => { setCurrentId(demande._id); scrollToTop(); }}>
                       <DeleteIcon fontSize="small" /> Modifier
                     </Button>

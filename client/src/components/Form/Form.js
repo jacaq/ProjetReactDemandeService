@@ -10,15 +10,11 @@ import Select from '@material-ui/core/Select';
 import useStyles from './styles';
 import { createDemande, updateDemande } from '../../actions/demandes';
 
-//recuperer l'id du poste, si on clic sur les 3 poins du poste
-
-//les props sont ajouter pour recuperer l'id du poste selectionné si c'est pour la modif ////data
+//les props sont ajouter pour recuperer l'id de la demande selectionné si c'est pour la modif
 export default function Form({ currentId, setCurrentId }) {
   const [demandeData, setDemandeData] = useState({ title: '', message: '', localisation: '', prix: '', categorie: '', selectedFile: '', });
 
-  //recuperer le post s'il est selectionné
-  //si le currentId existe donc un poste a été clické sur les 3 points
-  //alors recuperer le post p
+  //recuperer la demande s'il est selectionné
   const demande = useSelector((state) => currentId ? state.demandes.find((p) => p._id === currentId) : null);
 
   const classes = useStyles();
@@ -29,13 +25,12 @@ export default function Form({ currentId, setCurrentId }) {
   //  recuperer depuis le navigateur qui est l'utilisateur connecté
   const user = JSON.parse(localStorage.getItem('profile'));
 
-  //utiliser le useEffect et mettre a jour a chaque fois qu'il y a un poste selectionné
+  //utiliser le useEffect et mettre a jour a chaque fois qu'il y a une demande modifié
   useEffect(() => {
     if (demande) setDemandeData(demande)
   }, [demande]);
 
-  //la foinction va demander la cretion d'un objet en BDD , grace auz données de l'objet local  (postData)
-  //et cela en lancer une des action definit 
+  //la fonction va demander la cretion d'un objet en BDD , grace aux données de l'objet local  (demandeData)
   //ensuite appeler la methode clear(), pour vider les champs de saisie
   const handleSubmit = (e) => {
     //  eviter la mise a jour automatique, pour eviter la perte de données
@@ -43,7 +38,7 @@ export default function Form({ currentId, setCurrentId }) {
     if (currentId) {
       dispatch(updateDemande(currentId, { ...demandeData, name: user?.result?.name }));
     } else {
-      //  identifier le createur du post grance a la connexion 
+      //  identifier le createur due la demande grance a la connexion 
       dispatch(createDemande({ ...demandeData, name: user?.result?.name }));
     }
     clear();
@@ -61,7 +56,7 @@ export default function Form({ currentId, setCurrentId }) {
     });
   }
 
-  //  tester si l'utilisateur n'est pas connecter alors lui refuser la creation de poste
+  //  tester si l'utilisateur n'est pas connecter alors lui refuser la creation d'une demande
   if (!user?.result?.name) {
     return (
       <Paper className={classes.paper} elevation={6}>
@@ -83,13 +78,14 @@ export default function Form({ currentId, setCurrentId }) {
         /*
             creation du formulaire
             pour utiliser de plusieur classe css venant de js dans un composant il faut suivre la syntaxe qui suit
+            className={`${classes.root} ${classes.form}`}
         */
       }
       {
         /*
           la fonction onSubmit va activer au clic sur un bouton submit la fonction qui va lancer l'enregistrement en BDD
-          elle va créer un objer post grace à -> setPostData({ ...postData, title: e.target.value })}
-          qui va changer une valeur precise dans le postData, crée plus haut
+          elle va créer un objer demande grace à -> setDemandeData({ ...demandeData, title: e.target.value })}
+          qui va changer une valeur precise dans le demandeData, crée plus haut
         */
       }
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
@@ -127,6 +123,3 @@ export default function Form({ currentId, setCurrentId }) {
     </Paper>
   )
 }
-
-/*<SelectType Categorie={demandeData.selectedFile} onChange={(e) => { onChange }} /> */
-// <SelectLabels />

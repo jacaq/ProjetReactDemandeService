@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import colorful from '../../images/colorful.png';
+import colorful from '../../images/colorful.jpg';
 
 
 //declaration et exportation des styles
@@ -7,6 +7,7 @@ export default makeStyles(() => ({
     HomeContainer: {
         backgroundColor: '#101524',
         backgroundImage: `url(${colorful})`,
+        backgroundRepeat: "no-repeat",
         minHeight: '80vh',
         borderRadius: 15,
         display: "flex",

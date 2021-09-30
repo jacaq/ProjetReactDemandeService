@@ -8,21 +8,6 @@ import sgLogoNoir from '../../images/ServiGuildLogo.png';
 import * as actionType from '../../constants/actionTypes';
 import useStyles from './styles';
 
-//import amazigh from '../../images/amazigh.png';
-
-
-/*
-<div className="navigation" >
-            <NavLink exact to="/" activeClassName="nav-active" className="nav-link">
-                Accueil
-            </NavLink>
-            <NavLink exact to="liste-services" activeClassName="nav-active" className="nav-link text-dark">
-                À propos
-            </NavLink>
-        </div >
-*/
-
-
 function Navigation() {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const dispatch = useDispatch();

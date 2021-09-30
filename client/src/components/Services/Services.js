@@ -19,7 +19,6 @@ function ServList() {
   //utilisation des style ecrit dans le fichier js
   const classes = useStyles();
 
-  //
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -36,8 +35,10 @@ function ServList() {
               <Demandes setCurrentId={setCurrentId} />
             </Grid>
             <Grid item md={12} lg={4} style={{ marginTop: 68 }}>
-              {/* ajouter le setCurrentId pour modifier le state avec l'id selectionné,
-                    et le currentId pour savoir quel poste somme nous entrain de modifier  */}
+              {/* 
+                  Ajouter le setCurrentId pour modifier le state avec l'id selectionné,
+                  et le currentId pour savoir quel demande somme nous entrain de modifier  
+              */}
               <Form currentId={currentId} setCurrentId={setCurrentId} />
             </Grid>
           </Grid>

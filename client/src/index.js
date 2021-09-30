@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 
 //les reducer s'occupe de la logique d'action au données
 //selon une action donnée elle efectue un traitement sut le state
-//ici les reducers concernes les posts
+//ici les reducers concernes les demandes
 import reducers from './reducers';
 
 import App from './App';

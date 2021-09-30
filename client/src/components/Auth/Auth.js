@@ -33,11 +33,11 @@ const SignUp = () => {
 
   //  fonction appelé au click sur le boutton
   const handleSubmit = (e) => {
-    //pour empecher le refresh automatique
+    //  pour empecher le refresh automatique
     e.preventDefault();
 
     //  avec le meme bouton de submit, faire une connexion ou une inscription selon la valeur de isMember
-    // signup = s'inscrire    ///   signin = connexion
+    //  signup = s'inscrire    ///   signin = connexion
     if (isMember) {
       dispatch(signup(form, history));
     } else {
@@ -104,7 +104,7 @@ const SignUp = () => {
           />
           <Grid container justifyContent="flex-end">
             <Grid item>
-              {/* Boutton pour switcher entrre la connexion et l'inscription si on a pas encore de compte */}
+              {/* Boutton pour switcher entre la connexion et l'inscription si on a pas encore de compte */}
               <Button onClick={switchMode}>
                 {isMember ? "Vous procédez déjà un compte? Se connecter" : "Pas encore de compte? S'inscrire"}
               </Button>

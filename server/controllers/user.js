@@ -49,10 +49,6 @@ export const signup = async (req, res) => {
         //si l'utilisateur existe deja retourner message erreur
         if (oldUser) return res.status(400).json({ message: "User already exists" });
 
-        //  verification si la confirmation du mot de passe est correct ou pas
-        //  ajouter le confirmPassword dans la recuperation des données du formulaire
-        //if (password === confirmPassword) return res.status(400).json({ message: "la confirmation du mot de passe est incorrect !" });
-
         //  crypter le mot de passe
         const hashedPassword = await bcrypt.hash(password, 12);
 
@@ -60,7 +56,7 @@ export const signup = async (req, res) => {
         //  en les formatant selon nos besoins, ex password crypté, ou combinaison du nom et prenom
         const result = await UserModal.create({ email, password: hashedPassword, name: `${firstName} ${lastName}` });
 
-        //  crrer le token pour se connecter directement après l'inscription
+        //  créer le token pour se connecter directement après l'inscription
         const token = jwt.sign({ email: result.email, id: result._id }, secret, { expiresIn: "1h" });
 
         //  retourner le resultat

@@ -10,7 +10,6 @@ export default makeStyles((theme) => ({
         padding: theme.spacing(2),
         margin: '0.5em auto',
         color: 'black',
-        //background: 'linear-gradient(to right bottom, #13547a, #09203f )',
     },
     textcontainer: {
         padding: '0 1em',
